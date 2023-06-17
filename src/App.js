@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 import Task from './components/Task';
+import TaskList from './components/TaskList';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Task task={{ title: "Task 1", description: "Description 1", id: 1 }} />
+
+      <TaskList />
+
       </header>
     </div>
   );
