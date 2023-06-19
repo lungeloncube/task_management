@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 const TaskForm = ({ addTask }) => {
  const [title, setTitle] = useState('');
  const [description, setDescription] = useState('');
+ 
      return (
          <div>
             <input
@@ -10,7 +11,7 @@ const TaskForm = ({ addTask }) => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
            />
-         <textarea
+         <input type="text"
             placeholder="Task Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
