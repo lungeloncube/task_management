@@ -5,22 +5,16 @@ import TaskEditor from './TaskEditor';
 const Task = (props) => {
   const { task , onDelete, onEdit} = props;
   const [isEditing, setIsEditing] =useState(false)
-
   const handleEditClick=()=>{
     setIsEditing(true);
   }
-
-  
   return (
-   /* <div>
-      <p>ID: {task.id}</p>
-      <h3>{task.title}</h3>
-      <p>Description: {task.description}</p>
-    </div> */
+
 <>
 {isEditing ? (
+  //Not sure how to display this need to implement a pop up modal if its possible
  <div >
-      <TaskEditor task={task}  /></div>
+      <TaskEditor task={task} /></div>
       ) :
     <tr>
       <td>{task.id}</td>

@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-import { Modal, Button } from 'react-bootstrap'
-
-export default ({ task }) => {
+export default ({ task , isEditting}) => {
   const [tempData, setTempData] = useState();
   const[changed, setChanged]= useState(false);
   useEffect(() => {
     console.log("data", tempData)
     console.log("changed", changed)
   })
-  const [isShow, invokeModal] = React.useState(false)
-  const initModal = () => {
-    return invokeModal(!false)
-  }
 
  
   return (
@@ -48,14 +42,18 @@ export default ({ task }) => {
       />
     {changed?<><button
     onClick={(e)=>{
-      setTempData(tempData) 
+      // setTempData(tempData) 
       setChanged(false)
+      isEditting=false
+      task=tempData
+  
     }}
     >Update</button>
 
     <button onClick={(e)=>{
     tempData({...task})  
       setChanged(false)
+      isEditting=false
     }}
     >Cancel</button></>:null}
     </form>
