@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Task from './Task';
 import TaskForm from './TaskForm';
+import TaskEditor from './TaskEditor';
 // import { v4 as uuidv4 } from 'uuid';
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [idCounter, setIdCounter] = useState(0);
+  const [task, setTask] = useState(null);
 
-  // const addTask = (title, description) => {
-  //   const newTask = { id: idCounter, title, description };
-  //   setTasks([...tasks, newTask]);
-  //   setIdCounter(idCounter + 1);
-  // };
 
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
@@ -19,16 +16,20 @@ function TaskList() {
    
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter((task) => task.id !== taskId));
+ setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
-  // const handleAddTask = (event) => {
-  //   event.preventDefault();
-  //   const title = event.target.title.value;
-  //   const description = event.target.description.value;
-  //   addTask(title, description);
-  //   event.target.reset();
-  // };
+  const editTask = (taskId) => {
+    const selected=tasks.filter((item) => item.id === taskId)
+    setTask(selected);
+  
+ 
+  };
+
+
+  useEffect(() => {
+    console.log("selected", task)
+  })
 
   return (
     <div>
@@ -37,7 +38,7 @@ function TaskList() {
               <table>
         <thead>
           <tr>
-            {/* <th>ID</th> */}
+            <th>ID</th>
             <th>Title</th>
             <th>Description</th>
             <th>Actions</th>
@@ -46,8 +47,11 @@ function TaskList() {
         <tbody>
 
       {tasks.map((task) => (
-        <Task key={task.id} task={task} onDelete={deleteTask} />
+        <Task key={task.id} task={task} onDelete={deleteTask} onEdit={editTask}/>
+    
+
       ))}
+   
        </tbody>
       </table>
 
