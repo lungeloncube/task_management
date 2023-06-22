@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import TaskEditor from './TaskEditor';
-
+import { BrowserRouter, Route, Link } from 'react-router-dom' 
 
 const Task = (props) => {
   const { task , onDelete, onEdit} = props;
@@ -15,6 +15,7 @@ const Task = (props) => {
   //Not sure how to display this need to implement a pop up modal if its possible
  <div >
       <TaskEditor task={task} /></div>
+
       ) :
     <tr>
       <td>{task.id}</td>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Dialog } from '@headlessui/react'
 
 export default ({ task , isEditting}) => {
   const [tempData, setTempData] = useState();
   const[changed, setChanged]= useState(false);
+  let [isOpen, setIsOpen] = useState(true)
   useEffect(() => {
     console.log("data", tempData)
     console.log("changed", changed)
@@ -10,7 +12,8 @@ export default ({ task , isEditting}) => {
 
  
   return (
-    <dialog open>
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+      <Dialog.Panel>
     <form>
       <input
         type="text"
@@ -46,6 +49,7 @@ export default ({ task , isEditting}) => {
       setChanged(false)
       isEditting=false
       task=tempData
+      setIsOpen(false)
   
     }}
     >Update</button>
@@ -54,10 +58,12 @@ export default ({ task , isEditting}) => {
     tempData({...task})  
       setChanged(false)
       isEditting=false
+      setIsOpen(false)
     }}
     >Cancel</button></>:null}
     </form>
-    </dialog>
+    </Dialog.Panel>
+    </Dialog>
 
   );
 }
