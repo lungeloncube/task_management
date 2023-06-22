@@ -18,12 +18,16 @@ function TaskList() {
   const deleteTask = (taskId) => {
  setTasks(tasks.filter((task) => task.id !== taskId));
   };
-
-  const editTask = (taskId) => {
-    const selected=tasks.filter((item) => item.id === taskId)
-    setTask(selected);
   
- 
+
+  const editTask = (taskId, updatedTask) => {
+    const updatedTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return { ...task, ...updatedTask };
+      }
+      return task;
+    });
+    setTasks(updatedTasks);
   };
 
 
