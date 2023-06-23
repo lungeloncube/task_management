@@ -25,7 +25,7 @@ const Task = (props) => {
 <>
 
 {isEditing ? (
-  //Not sure how to display this need to implement a pop up modal if its possible
+  
  <div >
       <TaskEditor task={task} onSave={handleSave} onCancelClick={handleCancelClick} /></div>
       ) :

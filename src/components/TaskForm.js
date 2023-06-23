@@ -21,17 +21,14 @@ function TaskForm({addTask}) {
   }
 
   return (
+    <div>
+    <h2>Task Form</h2>
     <form className="my-form" onSubmit={handleSubmit}>
   <input className="my-input" type="text" value={title} onChange={handleTitleChange} placeholder="Task Title" />
   <input className="my-input" type="text" value={description} onChange={handleDescriptionChange} placeholder="Task Description" />
   <button className="my-button-add" type="submit">Add Task</button>
 </form>
-
-    // <form onSubmit={handleSubmit}>
-    //   <input type="text" value={title} onChange={handleTitleChange} placeholder="Task Title" />
-    //   <input type="text" value={description} onChange={handleDescriptionChange} placeholder="Task Description" />
-    //   <button type="submit">Add Task</button>
-    // </form>
+</div>
   );
 }
 
